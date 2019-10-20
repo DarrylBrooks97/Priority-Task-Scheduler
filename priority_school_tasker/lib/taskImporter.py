@@ -16,7 +16,19 @@ currentUser = canvas.get_current_user()
 #Pulls upcoming events
 upComingEvents = requests.get(API_URL + "/api/v1/calendar_events?access_token=" + API_KEY)
 
+#Pulls courses
+userCourses = canvas.get_courses()
 
+outFile = open("/Users/darrylb/Documents/GitHub Projects/HackFSU_2019/priority_school_tasker/assets/userInfo.txt", 'w')
 
+outFile.write("User:{ \n")
+for i in userCourses:
+    outFile.write("Class:{\n")
+    outFile.write("Name: " + str(i) + "\n")
+    outFile.write("Weight: 3\n")
+    outFile.write("Credit: 3\n")
+    outFile.write("},\n")
+
+outFile.close()
 
 
