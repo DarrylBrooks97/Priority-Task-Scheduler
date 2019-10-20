@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/semantics.dart';
@@ -52,23 +53,23 @@ class MyAppState extends State<MyApp> {
           items: [
             BottomNavigationBarItem(
               backgroundColor: Colors.blue,
-              icon: Icon(Icons.storage),
+              icon: Icon(CupertinoIcons.collections),
               title: Text('Tasks')
             ),
             BottomNavigationBarItem(
               backgroundColor: Colors.blue,
-              icon: Icon(Icons.plus_one),
+              icon: Icon(CupertinoIcons.add_circled),
               title: Text('Add')
             ),
             BottomNavigationBarItem(
               backgroundColor: Colors.blue,
-              icon: Icon(Icons.lightbulb_outline),
+              icon: Icon(CupertinoIcons.book),
               title: Text('Quotes')
             ),
 
             BottomNavigationBarItem(
               backgroundColor: Colors.blue,
-              icon: Icon(Icons.live_help),
+              icon: Icon(CupertinoIcons.search),
               title: Text('Help'),
             ),
           ],
@@ -165,41 +166,91 @@ class Tasks extends StatelessWidget {
         children: <Widget>[
           Container(
             height: 100,
-            color: Colors.orange[900],
-            child: const Center(child: Text('Task 1 Name' +
+            decoration: new BoxDecoration(
+              color: Colors.orange[900],
+              borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(40.0),
+                topRight: const Radius.circular(40.0),
+                bottomLeft: const Radius.circular(40.0),
+                bottomRight: const Radius.circular(40.0),
+              ),
+            ),
+
+              child: const Center(child: Text('Task 1 Name' +
                 '\n\nClass' + '\n\nDate Due')),
-          ),
+
+            ),
           Container(
             height: 100,
-            color: Colors.orange[800],
+            decoration: new BoxDecoration(
+              color: Colors.orange[800],
+              borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(40.0),
+                topRight: const Radius.circular(40.0),
+                bottomLeft: const Radius.circular(40.0),
+                bottomRight: const Radius.circular(40.0),
+              ),
+            ),
             child: const Center(child: Text('Task 2 Name' +
                 '\n\nClass' + '\n\nDate Due')),
 
           ),
           Container(
             height: 100,
-            color: Colors.orange[700],
+            decoration: new BoxDecoration(
+              color: Colors.orange[700],
+              borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(40.0),
+                topRight: const Radius.circular(40.0),
+                bottomLeft: const Radius.circular(40.0),
+                bottomRight: const Radius.circular(40.0),
+              ),
+            ),
             child: const Center(child: Text('Task 3 Name' +
                 '\n\nClass' + '\n\nDate Due')),
 
           ),
           Container(
             height: 100,
-            color: Colors.orange[600],
+            decoration: new BoxDecoration(
+              color: Colors.orange[600],
+              borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(40.0),
+                topRight: const Radius.circular(40.0),
+                bottomLeft: const Radius.circular(40.0),
+                bottomRight: const Radius.circular(40.0),
+              ),
+            ),
             child: const Center(child: Text('Task 4 Name' +
                 '\n\nClass' + '\n\nDate Due')),
 
           ),
           Container(
             height: 100,
-            color: Colors.orange[500],
+            decoration: new BoxDecoration(
+              color: Colors.orange[500],
+              borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(40.0),
+                topRight: const Radius.circular(40.0),
+                bottomLeft: const Radius.circular(40.0),
+                bottomRight: const Radius.circular(40.0),
+              ),
+            ),
             child: const Center(child: Text('Task 5 Name' +
                 '\n\nClass' + '\n\nDate Due')),
 
           ),
           Container(
             height: 100,
-            color: Colors.orange[400],
+            decoration: new BoxDecoration(
+              color: Colors.orange[400],
+              borderRadius: new BorderRadius.only(
+                topLeft: const Radius.circular(40.0),
+                topRight: const Radius.circular(40.0),
+                bottomLeft: const Radius.circular(40.0),
+                bottomRight: const Radius.circular(40.0),
+              ),
+            ),
             child: const Center(child: Text('Task 6 Name' +
                 '\n\nClass' + '\n\nDate Due')),
 
