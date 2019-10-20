@@ -157,6 +157,7 @@ class MotivationalQuotes extends StatelessWidget {
 }
 
 class Tasks extends StatelessWidget {
+  static const double taskBoarder = 20.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -169,10 +170,10 @@ class Tasks extends StatelessWidget {
             decoration: new BoxDecoration(
               color: Colors.orange[900],
               borderRadius: new BorderRadius.only(
-                topLeft: const Radius.circular(40.0),
-                topRight: const Radius.circular(40.0),
-                bottomLeft: const Radius.circular(40.0),
-                bottomRight: const Radius.circular(40.0),
+                topLeft: const Radius.circular(taskBoarder),
+                topRight: const Radius.circular(taskBoarder),
+                bottomLeft: const Radius.circular(taskBoarder),
+                bottomRight: const Radius.circular(taskBoarder),
               ),
             ),
 
@@ -185,10 +186,10 @@ class Tasks extends StatelessWidget {
             decoration: new BoxDecoration(
               color: Colors.orange[800],
               borderRadius: new BorderRadius.only(
-                topLeft: const Radius.circular(40.0),
-                topRight: const Radius.circular(40.0),
-                bottomLeft: const Radius.circular(40.0),
-                bottomRight: const Radius.circular(40.0),
+                topLeft: const Radius.circular(taskBoarder),
+                topRight: const Radius.circular(taskBoarder),
+                bottomLeft: const Radius.circular(taskBoarder),
+                bottomRight: const Radius.circular(taskBoarder),
               ),
             ),
             child: const Center(child: Text('Task 2 Name' +
@@ -200,10 +201,10 @@ class Tasks extends StatelessWidget {
             decoration: new BoxDecoration(
               color: Colors.orange[700],
               borderRadius: new BorderRadius.only(
-                topLeft: const Radius.circular(40.0),
-                topRight: const Radius.circular(40.0),
-                bottomLeft: const Radius.circular(40.0),
-                bottomRight: const Radius.circular(40.0),
+                 topLeft: const Radius.circular(taskBoarder),
+                topRight: const Radius.circular(taskBoarder),
+                bottomLeft: const Radius.circular(taskBoarder),
+                bottomRight: const Radius.circular(taskBoarder),
               ),
             ),
             child: const Center(child: Text('Task 3 Name' +
@@ -215,10 +216,10 @@ class Tasks extends StatelessWidget {
             decoration: new BoxDecoration(
               color: Colors.orange[600],
               borderRadius: new BorderRadius.only(
-                topLeft: const Radius.circular(40.0),
-                topRight: const Radius.circular(40.0),
-                bottomLeft: const Radius.circular(40.0),
-                bottomRight: const Radius.circular(40.0),
+                topLeft: const Radius.circular(taskBoarder),
+                topRight: const Radius.circular(taskBoarder),
+                bottomLeft: const Radius.circular(taskBoarder),
+                bottomRight: const Radius.circular(taskBoarder),
               ),
             ),
             child: const Center(child: Text('Task 4 Name' +
@@ -230,10 +231,10 @@ class Tasks extends StatelessWidget {
             decoration: new BoxDecoration(
               color: Colors.orange[500],
               borderRadius: new BorderRadius.only(
-                topLeft: const Radius.circular(40.0),
-                topRight: const Radius.circular(40.0),
-                bottomLeft: const Radius.circular(40.0),
-                bottomRight: const Radius.circular(40.0),
+                 topLeft: const Radius.circular(taskBoarder),
+                topRight: const Radius.circular(taskBoarder),
+                bottomLeft: const Radius.circular(taskBoarder),
+                bottomRight: const Radius.circular(taskBoarder),
               ),
             ),
             child: const Center(child: Text('Task 5 Name' +
@@ -245,10 +246,10 @@ class Tasks extends StatelessWidget {
             decoration: new BoxDecoration(
               color: Colors.orange[400],
               borderRadius: new BorderRadius.only(
-                topLeft: const Radius.circular(40.0),
-                topRight: const Radius.circular(40.0),
-                bottomLeft: const Radius.circular(40.0),
-                bottomRight: const Radius.circular(40.0),
+                 topLeft: const Radius.circular(taskBoarder),
+                topRight: const Radius.circular(taskBoarder),
+                bottomLeft: const Radius.circular(taskBoarder),
+                bottomRight: const Radius.circular(taskBoarder),
               ),
             ),
             child: const Center(child: Text('Task 6 Name' +
