@@ -3,6 +3,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -10,6 +11,7 @@ class MyApp extends StatefulWidget {
   //Use to store between the different states based of bottom bar selection
   State<StatefulWidget> createState(){
     return MyAppState();
+
   }
 }
 
@@ -17,7 +19,7 @@ class MyAppState extends State<MyApp> {
 
   noSuchMethod(Invocation i) => super.noSuchMethod(i);
 
-  int _selectedPage = 1;
+  int _selectedPage = 0;
   final _pageOptions = [
     Tasks(),   //First option
     AddNewAssignment(), //Middle Option
@@ -40,6 +42,7 @@ class MyAppState extends State<MyApp> {
         //always loading the DynamicListView(HOME)
         body: _pageOptions[_selectedPage],
         bottomNavigationBar: BottomNavigationBar(
+
           currentIndex: _selectedPage,
           onTap: (int index){
             setState((){
@@ -48,20 +51,23 @@ class MyAppState extends State<MyApp> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.storage),
               backgroundColor: Colors.blue,
+              icon: Icon(Icons.storage),
               title: Text('Tasks')
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.add),
+              backgroundColor: Colors.blue,
+              icon: Icon(Icons.plus_one),
               title: Text('Add')
             ),
             BottomNavigationBarItem(
+              backgroundColor: Colors.blue,
               icon: Icon(Icons.lightbulb_outline),
               title: Text('Quotes')
             ),
 
             BottomNavigationBarItem(
+              backgroundColor: Colors.blue,
               icon: Icon(Icons.live_help),
               title: Text('Help'),
             ),
@@ -125,13 +131,6 @@ class GetHelp extends StatelessWidget {
   Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(title: Text("Help"),),
-//      floatingActionButton: FloatingActionButton(
-//          elevation: 10.0,
-//          child: Icon(Icons.add),
-//          onPressed: (){
-//            print('Get Help');
-//          }
-//      ),
     );
   }
 }
@@ -152,14 +151,6 @@ class MotivationalQuotes extends StatelessWidget {
           ),
         ),
       ),
-      //NOTE: Pull in a random array and display it the user and center it on the screen
-//          floatingActionButton: FloatingActionButton(
-//          elevation: 10.0,
-//          child: Icon(Icons.add),
-//          onPressed: (){
-//            print('\"A mind is a terrible thing to waste\" - Harriet Tubman ');
-//          }
-//      ),
     );
   }
 }
