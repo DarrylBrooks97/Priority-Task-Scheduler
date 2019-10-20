@@ -1,0 +1,77 @@
+User:{ 
+Class:{
+Name: EEL3112.01.COMBINED.FA2018 ADV CKTS W/COMP (48)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: EEL3112L.01.COMBINED.FA2018 CKT LAB W/ COMPUTERS (49)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: EEL3705.01.COMBINED.FA2018 DIGITAL LOGIC DESIGN (54)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: EEL3705L.01.COMBINED.FA2018 DIGITAL LOGIC LAB (55)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: ECE SENIOR DESIGN PROJECT I ECE SENIOR DESIGN  I (F19) (2116)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: INTRO TO FIELD PROG EEL4710.01.COMBINED.FA2019 (2166)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: MICRO BASED SYS DES EEL4746 Microprocessors (2064)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: MICRO BASED SYS DES LAB EEL4746L Microprocessors Lab (2065)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: EEE3300.01.COMBINED.SPR2019 ELECTRONICS (292)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: EEE3300L.01.COMBINED.SPR2019 ELECTRONICS LAB (291)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: EEL3927.01.COMBINED.SPR2019 ENGINEERING DESIGN CONCEPTS (308)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: ME SENIOR DESIGN PROJECT I (F19) ME Senior Design I (F19) (2230)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: RLS Staff Resources RLS Staff Resources (102840000000024837)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: EEL3135.01.COMBINED.SPR2019 SIG & LIN SYS ANAL (310)
+Weight: 3
+Credit: 3
+},
+Class:{
+Name: EEL3135.02.COMBINED.SPR2019 SIGNAL & LINEAR SYSTEMS ANALYSIS (1178)
+Weight: 3
+Credit: 3
+}
+}

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:flutter/semantics.dart';
-=======
 import 'package:flutter/services.dart' show rootBundle;
->>>>>>> e961c640ba63e22c72f36aa4a415fd5f699c69c8
 
 void main() => runApp(MyApp());
 
@@ -32,26 +29,12 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Priority School Tasker',
       theme: ThemeData(
-<<<<<<< HEAD
-     
         primarySwatch: Colors.blue,
-=======
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.red,
->>>>>>> e961c640ba63e22c72f36aa4a415fd5f699c69c8
       ),
       home: Scaffold
       (
         appBar: new AppBar(title: Text("Dynamic List View"),),
-        //NOTE: Add array of different page states to change between each state instead of 
+        //NOTE: Add array of different page states to change between each state instead of
         //always loading the DynamicListView(HOME)
         body: _pageOptions[_selectedPage],
         bottomNavigationBar: BottomNavigationBar(
@@ -108,7 +91,6 @@ class MyDynamicListView extends StatelessWidget {
       );
 
     }
-<<<<<<< HEAD
 }
 
 //Allows user to add an assignment or modify
@@ -117,7 +99,7 @@ class AddNewAssignment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      Text('Add Class')
+       Text('Add Class')
     );
   }
 }
@@ -142,6 +124,4 @@ class MotivationalQuotes extends StatelessWidget {
     );
   }
 }
-=======
-}
->>>>>>> e961c640ba63e22c72f36aa4a415fd5f699c69c8
+
