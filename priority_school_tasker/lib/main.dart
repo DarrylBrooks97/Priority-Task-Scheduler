@@ -173,41 +173,41 @@ class Tasks extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         children: <Widget>[
           Container(
-            height: 50,
+            height: 100,
             color: Colors.orange[900],
             child: const Center(child: Text('Task 1 Name' +
                 '\n\nClass' + '\n\nDate Due')),
           ),
           Container(
-            height: 50,
+            height: 100,
             color: Colors.orange[800],
             child: const Center(child: Text('Task 2 Name' +
                 '\n\nClass' + '\n\nDate Due')),
 
           ),
           Container(
-            height: 50,
+            height: 100,
             color: Colors.orange[700],
             child: const Center(child: Text('Task 3 Name' +
                 '\n\nClass' + '\n\nDate Due')),
 
           ),
           Container(
-            height: 50,
+            height: 100,
             color: Colors.orange[600],
             child: const Center(child: Text('Task 4 Name' +
                 '\n\nClass' + '\n\nDate Due')),
 
           ),
           Container(
-            height: 50,
+            height: 100,
             color: Colors.orange[500],
             child: const Center(child: Text('Task 5 Name' +
                 '\n\nClass' + '\n\nDate Due')),
 
           ),
           Container(
-            height: 50,
+            height: 100,
             color: Colors.orange[400],
             child: const Center(child: Text('Task 6 Name' +
                 '\n\nClass' + '\n\nDate Due')),
