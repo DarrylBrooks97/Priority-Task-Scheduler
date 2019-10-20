@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -168,16 +169,53 @@ class Tasks extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(title: Text("Tasks"),),
-      body: Center(
-        child: Text(
-          "Hello World",
-          style: TextStyle(
-            color: Colors.blue,
-            fontSize: 40.0,
-            fontStyle: FontStyle.italic,
+      body: ListView(
+        padding: const EdgeInsets.all(8),
+        children: <Widget>[
+          Container(
+            height: 50,
+            color: Colors.orange,
+            child: const Center(child: Text('Task 1 Name' +
+                '\nClass' + '\nDate Due')),
           ),
-        ),
-      ),
+          Container(
+            height: 50,
+            color: Colors.orange,
+            child: const Center(child: Text('Task 2 Name' +
+                '\nClass' + '\nDate Due')),
+
+          ),
+          Container(
+            height: 50,
+            color: Colors.orange,
+            child: const Center(child: Text('Task 3 Name' +
+                '\nClass' + '\nDate Due')),
+
+          ),
+          Container(
+            height: 50,
+            color: Colors.orange,
+            child: const Center(child: Text('Task 4 Name' +
+                '\nClass' + '\nDate Due')),
+
+          ),
+          Container(
+            height: 50,
+            color: Colors.orange,
+            child: const Center(child: Text('Task 5 Name' +
+                '\nClass' + '\nDate Due')),
+
+          ),
+          Container(
+            height: 50,
+            color: Colors.orange,
+            child: const Center(child: Text('Task 6 Name' +
+                '\nClass' + '\nDate Due')),
+
+          ),
+        ]
+      )
+
       //NOTE: Pull in a random array and display it the user and center it on the screen
 //          floatingActionButton: FloatingActionButton(
 //          elevation: 10.0,
