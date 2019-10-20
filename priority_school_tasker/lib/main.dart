@@ -16,12 +16,13 @@ class MyAppState extends State<MyApp> {
 
   noSuchMethod(Invocation i) => super.noSuchMethod(i);
 
-  int _selectedPage = 3;
+  int _selectedPage = 1;
   final _pageOptions = [
-    GetHelp(), //Left Option
+    Tasks(),   //First option
     AddNewAssignment(), //Middle Option
     MotivationalQuotes(), //Right Option
-    MyDynamicListView(), //DEFAULT HOME: (_pageOptions.length - 1) index
+    GetHelp(), //Left Option
+//    MyDynamicListView(), //DEFAULT HOME: (_pageOptions.length - 1) index
   ];
 
   @override
@@ -33,7 +34,7 @@ class MyAppState extends State<MyApp> {
       ),
       home: Scaffold
       (
-        appBar: new AppBar(title: Text("Dynamic List View"),),
+//        appBar: new AppBar(title: Text("Home"),),
         //NOTE: Add array of different page states to change between each state instead of
         //always loading the DynamicListView(HOME)
         body: _pageOptions[_selectedPage],
@@ -46,8 +47,9 @@ class MyAppState extends State<MyApp> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.live_help),
-              title: Text('Help'),
+              icon: Icon(Icons.storage),
+              backgroundColor: Colors.blue,
+              title: Text('Tasks')
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.add),
@@ -56,6 +58,11 @@ class MyAppState extends State<MyApp> {
             BottomNavigationBarItem(
               icon: Icon(Icons.lightbulb_outline),
               title: Text('Quotes')
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.live_help),
+              title: Text('Help'),
             ),
           ],
         ),
@@ -99,7 +106,14 @@ class AddNewAssignment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       Text('Add Class')
+      appBar: new AppBar(title: Text("Add Assignments"),),
+//       floatingActionButton: FloatingActionButton(
+//          elevation: 10.0,
+//          child: Icon(Icons.add),
+//          onPressed: (){
+//            print('Add class');
+//          }
+//      ),
     );
   }
 }
@@ -108,8 +122,15 @@ class AddNewAssignment extends StatelessWidget {
 class GetHelp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      Text('Get Help!')
+      return Scaffold(
+        appBar: AppBar(title: Text("Help"),),
+//      floatingActionButton: FloatingActionButton(
+//          elevation: 10.0,
+//          child: Icon(Icons.add),
+//          onPressed: (){
+//            print('Get Help');
+//          }
+//      ),
     );
   }
 }
@@ -119,8 +140,52 @@ class MotivationalQuotes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: new AppBar(title: Text("Quote of the Day"),),
+      body: Center(
+        child: Text(
+          "\"A mind is a terrible thing to waste\" - Harriet Tubman ",
+          style: TextStyle(
+            color: Colors.blue,
+            fontSize: 40.0,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+      ),
       //NOTE: Pull in a random array and display it the user and center it on the screen
-      Text('\"A mind is a terrible thing to waste\" - Harriet Tubman ')
+//          floatingActionButton: FloatingActionButton(
+//          elevation: 10.0,
+//          child: Icon(Icons.add),
+//          onPressed: (){
+//            print('\"A mind is a terrible thing to waste\" - Harriet Tubman ');
+//          }
+//      ),
+    );
+  }
+}
+
+class Tasks extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: new AppBar(title: Text("Tasks"),),
+      body: Center(
+        child: Text(
+          "Hello World",
+          style: TextStyle(
+            color: Colors.blue,
+            fontSize: 40.0,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+      ),
+      //NOTE: Pull in a random array and display it the user and center it on the screen
+//          floatingActionButton: FloatingActionButton(
+//          elevation: 10.0,
+//          child: Icon(Icons.add),
+//          onPressed: (){
+//            print('\"A mind is a terrible thing to waste\" - Harriet Tubman ');
+//          }
+//      ),
     );
   }
 }
