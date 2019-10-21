@@ -191,108 +191,38 @@ class MotivationalQuotes extends StatelessWidget {
 
 class Tasks extends StatelessWidget {
   static const double taskBoarder = 20.0;
+  final List<String> entries = <String> ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  final List<int> colorCodes = <int> [900, 800, 700, 600, 500, 400, 300, 200, 100];
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: new AppBar(title: Text("Tasks"),),
-      body: ListView(
-        padding: const EdgeInsets.all(8),
-        children: <Widget>[
-          Container(
-            height: 100,
-            decoration: new BoxDecoration(
-              color: Colors.orange[900],
-              borderRadius: new BorderRadius.only(
-                topLeft: const Radius.circular(taskBoarder),
-                topRight: const Radius.circular(taskBoarder),
-                bottomLeft: const Radius.circular(taskBoarder),
-                bottomRight: const Radius.circular(taskBoarder),
+      body:
+        ListView.separated(
+          padding: const EdgeInsets.all(8),
+          itemCount: entries.length,
+          itemBuilder: (BuildContext content, int index){
+            return Container(
+              height: 100,
+              decoration: new BoxDecoration(
+                color: Colors.amber[colorCodes[index]],
+                borderRadius: new BorderRadius.only(
+                  topLeft: const Radius.circular(taskBoarder),
+                  topRight: const Radius.circular(taskBoarder),
+                  bottomLeft: const Radius.circular(taskBoarder),
+                  bottomRight: const Radius.circular(taskBoarder),
+                ),
               ),
-            ),
-
-              child: const Center(child: Text('Task 1 Name' +
-                '\n\nClass' + '\n\nDate Due')),
-
-            ),
-          Container(
-            height: 100,
-            decoration: new BoxDecoration(
-              color: Colors.orange[800],
-              borderRadius: new BorderRadius.only(
-                topLeft: const Radius.circular(taskBoarder),
-                topRight: const Radius.circular(taskBoarder),
-                bottomLeft: const Radius.circular(taskBoarder),
-                bottomRight: const Radius.circular(taskBoarder),
-              ),
-            ),
-            child: const Center(child: Text('Task 2 Name' +
-                '\n\nClass' + '\n\nDate Due')),
-
-          ),
-          Container(
-            height: 100,
-            decoration: new BoxDecoration(
-              color: Colors.orange[700],
-              borderRadius: new BorderRadius.only(
-                 topLeft: const Radius.circular(taskBoarder),
-                topRight: const Radius.circular(taskBoarder),
-                bottomLeft: const Radius.circular(taskBoarder),
-                bottomRight: const Radius.circular(taskBoarder),
-              ),
-            ),
-            child: const Center(child: Text('Task 3 Name' +
-                '\n\nClass' + '\n\nDate Due')),
-
-          ),
-          Container(
-            height: 100,
-            decoration: new BoxDecoration(
-              color: Colors.orange[600],
-              borderRadius: new BorderRadius.only(
-                topLeft: const Radius.circular(taskBoarder),
-                topRight: const Radius.circular(taskBoarder),
-                bottomLeft: const Radius.circular(taskBoarder),
-                bottomRight: const Radius.circular(taskBoarder),
-              ),
-            ),
-            child: const Center(child: Text('Task 4 Name' +
-                '\n\nClass' + '\n\nDate Due')),
-
-          ),
-          Container(
-            height: 100,
-            decoration: new BoxDecoration(
-              color: Colors.orange[500],
-              borderRadius: new BorderRadius.only(
-                 topLeft: const Radius.circular(taskBoarder),
-                topRight: const Radius.circular(taskBoarder),
-                bottomLeft: const Radius.circular(taskBoarder),
-                bottomRight: const Radius.circular(taskBoarder),
-              ),
-            ),
-            child: const Center(child: Text('Task 5 Name' +
-                '\n\nClass' + '\n\nDate Due')),
-
-          ),
-          Container(
-            height: 100,
-            decoration: new BoxDecoration(
-              color: Colors.orange[400],
-              borderRadius: new BorderRadius.only(
-                 topLeft: const Radius.circular(taskBoarder),
-                topRight: const Radius.circular(taskBoarder),
-                bottomLeft: const Radius.circular(taskBoarder),
-                bottomRight: const Radius.circular(taskBoarder),
-              ),
-            ),
-            child: const Center(child: Text('Task 6 Name' +
-                '\n\nClass' + '\n\nDate Due')),
-
-          ),
-        ]
-      )
-
+              child:
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: Text('Task ${entries[index]}'),
+                ),
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) => const Divider(),
+        )
       //NOTE: Pull in a random array and display it the user and center it on the screen
 //          floatingActionButton: FloatingActionButton(
 //          elevation: 10.0,
