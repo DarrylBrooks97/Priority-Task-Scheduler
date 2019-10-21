@@ -1,18 +1,41 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:path_provider/path_provider.dart';
+import 'dart:async';
+import 'dart:io';
 
 
 void main() => runApp(MyApp());
+
+class FileUtils{
+  static Future<String> get getFilePath async{
+    final directory = await getApplicationDocumentsDirectory();
+    return directory.path;
+  }
+
+  static Future<File> get getFile async{
+      final path = await getFilePath;
+      return File('/Users/darrylb/Documents/GitHub Projects/HackFSU_2019/priority_school_tasker/assets/userInfo.txt');
+  }
+
+  static Future<String> readFromFile() async{
+    try{
+      final file = await getFile;
+      String fileContents = await file.readAsString();
+      return fileContents;
+    }catch(e){
+      return "No File!";
+    }
+  }
+
+}
 
 class MyApp extends StatefulWidget {
   @override
   //Use to store between the different states based of bottom bar selection
   State<StatefulWidget> createState(){
     return MyAppState();
-
   }
 }
 
@@ -31,8 +54,10 @@ class MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Priority School Tasker',
+
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -113,15 +138,23 @@ class MyDynamicListView extends StatelessWidget {
 class AddNewAssignment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String fileContents = "No Information";
+    final myController = TextEditingController();
+
     return Scaffold(
       appBar: new AppBar(title: Text("Add Assignments"),),
-//       floatingActionButton: FloatingActionButton(
-//          elevation: 10.0,
-//          child: Icon(Icons.add),
-//          onPressed: (){
-//            print('Add class');
-//          }
-//      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          TextField( controller: myController,),
+          RaisedButton(
+            child:Text("Import Classes"),
+            onPressed: () {
+              Text("fileContents");
+            }),
+
+        ]
+      )
     );
   }
 }
@@ -160,6 +193,7 @@ class Tasks extends StatelessWidget {
   static const double taskBoarder = 20.0;
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: new AppBar(title: Text("Tasks"),),
       body: ListView(
