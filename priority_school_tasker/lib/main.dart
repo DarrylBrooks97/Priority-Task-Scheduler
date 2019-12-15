@@ -8,28 +8,7 @@ import 'dart:io';
 
 void main() => runApp(MyApp());
 
-class FileUtils{
-  static Future<String> get getFilePath async{
-    final directory = await getApplicationDocumentsDirectory();
-    return directory.path;
-  }
 
-  static Future<File> get getFile async{
-      final path = await getFilePath;
-      return File('/Users/darrylb/Documents/GitHub Projects/HackFSU_2019/priority_school_tasker/assets/userInfo.txt');
-  }
-
-  static Future<String> readFromFile() async{
-    try{
-      final file = await getFile;
-      String fileContents = await file.readAsString();
-      return fileContents;
-    }catch(e){
-      return "No File Found";
-    }
-  }
-
-}
 
 class MyApp extends StatefulWidget {
   @override
