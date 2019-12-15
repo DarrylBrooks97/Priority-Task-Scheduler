@@ -8,28 +8,7 @@ import 'dart:io';
 
 void main() => runApp(MyApp());
 
-class FileUtils{
-  static Future<String> get getFilePath async{
-    final directory = await getApplicationDocumentsDirectory();
-    return directory.path;
-  }
 
-  static Future<File> get getFile async{
-      final path = await getFilePath;
-      return File('/Users/darrylb/Documents/GitHub Projects/HackFSU_2019/priority_school_tasker/assets/userInfo.txt');
-  }
-
-  static Future<String> readFromFile() async{
-    try{
-      final file = await getFile;
-      String fileContents = await file.readAsString();
-      return fileContents;
-    }catch(e){
-      return "No File Found";
-    }
-  }
-
-}
 
 class MyApp extends StatefulWidget {
   @override
@@ -62,7 +41,7 @@ class MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold
-      (
+        (
 //        appBar: new AppBar(title: Text("Home"),),
         //NOTE: Add array of different page states to change between each state instead of
         //always loading the DynamicListView(HOME)
@@ -77,19 +56,19 @@ class MyAppState extends State<MyApp> {
           },
           items: [
             BottomNavigationBarItem(
-              backgroundColor: Colors.blue,
-              icon: Icon(CupertinoIcons.collections),
-              title: Text('Tasks')
+                backgroundColor: Colors.blue,
+                icon: Icon(CupertinoIcons.collections),
+                title: Text('Tasks')
             ),
             BottomNavigationBarItem(
-              backgroundColor: Colors.blue,
-              icon: Icon(CupertinoIcons.add_circled),
-              title: Text('Add')
+                backgroundColor: Colors.blue,
+                icon: Icon(CupertinoIcons.add_circled),
+                title: Text('Add')
             ),
             BottomNavigationBarItem(
-              backgroundColor: Colors.blue,
-              icon: Icon(CupertinoIcons.book),
-              title: Text('Quotes')
+                backgroundColor: Colors.blue,
+                icon: Icon(CupertinoIcons.book),
+                title: Text('Quotes')
             ),
 
             BottomNavigationBarItem(
@@ -110,27 +89,27 @@ class MyDynamicListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      // backing data
-      final europeanCountries = ['Albania', 'Andorra', 'Armenia', 'Austria',
-        'Azerbaijan', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria',
-        'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland',
-        'France', 'Georgia', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland',
-        'Italy', 'Kazakhstan', 'Kosovo', 'Latvia', 'Liechtenstein', 'Lithuania',
-        'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro',
-        'Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'Russia',
-        'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden',
-        'Switzerland', 'Turkey', 'Ukraine', 'United Kingdom', 'Vatican City'];
+    // backing data
+    final europeanCountries = ['Albania', 'Andorra', 'Armenia', 'Austria',
+      'Azerbaijan', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria',
+      'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland',
+      'France', 'Georgia', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland',
+      'Italy', 'Kazakhstan', 'Kosovo', 'Latvia', 'Liechtenstein', 'Lithuania',
+      'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro',
+      'Netherlands', 'Norway', 'Poland', 'Portugal', 'Romania', 'Russia',
+      'San Marino', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden',
+      'Switzerland', 'Turkey', 'Ukraine', 'United Kingdom', 'Vatican City'];
 
-      return ListView.builder(
-        itemCount: europeanCountries.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(europeanCountries[index]),
-          );
-        },
-      );
+    return ListView.builder(
+      itemCount: europeanCountries.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(europeanCountries[index]),
+        );
+      },
+    );
 
-    }
+  }
 }
 
 //Allows user to add an assignment or modify
@@ -142,19 +121,19 @@ class AddNewAssignment extends StatelessWidget {
     final myController = TextEditingController();
 
     return Scaffold(
-      appBar: new AppBar(title: Text("Add Assignments"),),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          TextField( controller: myController,),
-          RaisedButton(
-            child:Text("Import Classes"),
-            onPressed: () {
-              Text("fileContents");
-            }),
+        appBar: new AppBar(title: Text("Add Assignments"),),
+        body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              TextField( controller: myController,),
+              RaisedButton(
+                  child:Text("Import Classes"),
+                  onPressed: () {
+                    Text("fileContents");
+                  }),
 
-        ]
-      )
+            ]
+        )
     );
   }
 }
@@ -163,8 +142,8 @@ class AddNewAssignment extends StatelessWidget {
 class GetHelp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(title: Text("Help"),),
+    return Scaffold(
+      appBar: AppBar(title: Text("Help"),),
     );
   }
 }
@@ -197,8 +176,8 @@ class Tasks extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: new AppBar(title: Text("Tasks"),),
-      body:
+        appBar: new AppBar(title: Text("Tasks"),),
+        body:
         ListView.separated(
           padding: const EdgeInsets.all(8),
           itemCount: entries.length,
@@ -215,10 +194,10 @@ class Tasks extends StatelessWidget {
                 ),
               ),
               child:
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  child: Text('Task ${entries[index]}'),
-                ),
+              Container(
+                padding: const EdgeInsets.all(10),
+                child: Text('Task ${entries[index]}'),
+              ),
             );
           },
           separatorBuilder: (BuildContext context, int index) => const Divider(),
