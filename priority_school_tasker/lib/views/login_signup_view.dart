@@ -11,7 +11,7 @@ class SignUpView extends StatefulWidget {
 
   SignUpView({Key key, @required this.authFormType}) : super(key: key);
   @override
-  _SignUpViewState createState() => _SignUpViewState();
+  _SignUpViewState createState() => _SignUpViewState(authFormType: this.authFormType);
 }
 
 
@@ -43,15 +43,7 @@ class _SignUpViewState extends State<SignUpView> {
           child: Column(
             children: <Widget>[
               SizedBox(height: _height * 0.10,),
-              AutoSizeText(
-                "Hey there,\nwelcome back",
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: 35,
-                  fontFamily: 'Open Sans',
-                  color: Colors.white,
-                ),
-              ),
+              buildHeaderText(),
               SizedBox(height: _height * 0.05,),
               Padding(
                 padding: EdgeInsets.all(16.0),
@@ -67,6 +59,30 @@ class _SignUpViewState extends State<SignUpView> {
         ),
       ),
     );
+  }
+
+  AutoSizeText buildHeaderText() {
+    String _headerText = "test";
+
+    switch(authFormType) {
+      case AuthFormType.signIn: {
+        _headerText = "Hey there,\nwelcome back";
+        }
+        break;
+      case AuthFormType.signUp: {
+        _headerText = "Come Join Us";
+      }
+      break;
+    }
+    return AutoSizeText(
+              _headerText,
+              maxLines: 1,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 35,
+                color: Colors.white,
+              ),
+            );
   }
 
   List<Widget> buildInputs() {
