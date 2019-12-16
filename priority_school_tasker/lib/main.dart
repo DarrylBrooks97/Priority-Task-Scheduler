@@ -15,9 +15,10 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.red,
           ),
-          home: HomeView(),
+          home: HomeController(),
         routes: <String, WidgetBuilder> {
-          '/signUp' : (BuildContext context) => SignUpView(),
+          '/signIn' : (BuildContext context) => SignUpView(authFormType: AuthFormType.signIn,),
+//          '/signUp' : (BuildContext context) => SignUpView(authFormType: AuthFormType.signUp,),
           '/home' : (BuildContext context) => HomeController(),
         },
       )
