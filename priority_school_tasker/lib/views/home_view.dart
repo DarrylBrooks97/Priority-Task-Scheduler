@@ -6,19 +6,17 @@ import 'dart:async';
 import 'dart:io';
 
 
-void main() => runApp(MyApp());
 
 
-
-class MyApp extends StatefulWidget {
+class HomeView extends StatefulWidget {
   @override
   //Use to store between the different states based of bottom bar selection
   State<StatefulWidget> createState(){
-    return MyAppState();
+    return HomeViewState();
   }
 }
 
-class MyAppState extends State<MyApp> {
+class HomeViewState extends State<HomeView> {
 
   noSuchMethod(Invocation i) => super.noSuchMethod(i);
 
