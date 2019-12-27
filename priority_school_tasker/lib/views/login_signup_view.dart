@@ -10,6 +10,7 @@ class SignUpView extends StatefulWidget {
   final AuthFormType authFormType;
 
   SignUpView({Key key, @required this.authFormType}) : super(key: key);
+
   @override
   _SignUpViewState createState() =>
       _SignUpViewState(authFormType: this.authFormType);
@@ -63,8 +64,8 @@ class _SignUpViewState extends State<SignUpView> {
   }
 
   AutoSizeText buildHeaderText() {
-    String _headerText;
-    
+    String _headerText = 'test';
+
     if(authFormType == AuthFormType.signIn) {
       _headerText = "Hey there,welcome back";
       }
@@ -102,7 +103,6 @@ class _SignUpViewState extends State<SignUpView> {
         onSaved: (value) => _password = value,
       ),
     );
-
     return textFields;
   }
 

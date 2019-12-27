@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
           ),
           home: HomeView(),
         routes: <String, WidgetBuilder> {
-          '/signIn' : (BuildContext context) => SignUpView(authFormType: AuthFormType.signIn,),
-//          '/signUp' : (BuildContext context) => SignUpView(authFormType: AuthFormType.signUp,),
+          '/signIn' : (BuildContext context) => SignUpView(authFormType: AuthFormType.signUp),
+          '/signUp' : (BuildContext context) => SignUpView(authFormType: AuthFormType.signIn),
           '/home' : (BuildContext context) => HomeController(),
         },
       )

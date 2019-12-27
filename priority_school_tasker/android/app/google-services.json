@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "589656183670",
+    "firebase_url": "https://priority-school-tasker.firebaseio.com",
+    "project_id": "priority-school-tasker",
+    "storage_bucket": "priority-school-tasker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589656183670:android:e87dec8200a1b8412b2057",
+        "android_client_info": {
+          "package_name": "com.example.priority_school_tasker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589656183670-4rbv3cdrsbonc2e7vroe1ccc7rooublk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAndb-AklVmHI4cZx3hSIuftd4U3ZDb6tw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589656183670-4rbv3cdrsbonc2e7vroe1ccc7rooublk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "589656183670-vgnnafpu4n9qevhkoo456vqc3eojfg0j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.prioritySchoolTasker"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
