@@ -41,6 +41,9 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/userInfo.json
 #     assets:
 #       - assets/userInfo.txt
   # The following line ensures that the Material Icons font is

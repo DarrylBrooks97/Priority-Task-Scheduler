@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:path_provider/path_provider.dart';
 import 'dart:async';
-import 'dart:io';
+import 'package:priority_school_tasker/models/class.dart';
+import 'package:flutter/services.dart';
+import 'dart:convert';
 
 
 
@@ -113,26 +114,91 @@ class MyDynamicListView extends StatelessWidget {
 //Allows user to add an assignment or modify
 //Also connects to the screen that allows the user to add a class
 class AddNewAssignment extends StatelessWidget {
+   String fileContents = "No Classes on File";
+
+   bool loaded = false;
+//  AddNewAssignment({Key key, this.Class}) : super(key: key);
+
+  Future<String> getJSON() async{
+    return await rootBundle.loadString('assets/userInfo.json');
+  }
+
+  Future<List<UserClass>> loadClasses() async{
+    List<UserClass> Class = [];
+    String string = await getJSON();
+    int i = 0;
+    final finalJSON = json.decode(string);
+    int length = finalJSON.length;
+    UserClass newClass = new UserClass.fromJson(finalJSON[0]);
+    Class.add(newClass);
+    while(i<length-1){
+      Class.add(new UserClass.fromJson(finalJSON[i]));
+      ++i;
+    }
+    return Class;
+  }
+
   @override
   Widget build(BuildContext context) {
-    String fileContents = "No Information";
-    final myController = TextEditingController();
-
     return Scaffold(
-        appBar: new AppBar(title: Text("Add Assignments"),),
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              TextField( controller: myController,),
-              RaisedButton(
-                  child:Text("Import Classes"),
-                  onPressed: () {
-                    Text("fileContents");
-                  }),
-
-            ]
+        appBar: new AppBar(title: Text("Classes"),),
+        body:
+        Container(
+          child: FutureBuilder(
+              future: this.loadClasses(),
+              builder: (BuildContext context, AsyncSnapshot snapshot){
+                if(snapshot.data == null){
+                  return Container(
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      )
+                  );
+                }
+                return
+                  ListView.builder(
+                      itemCount: snapshot.data.length == null ? 0 : snapshot.data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return
+                          new Card(
+                            child: new Container(
+                              child: new Center(
+                                  child: new Column(
+                                    // Stretch the cards in horizontal axis
+                                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      new Text(
+                                        // Read the name field value and set it in the Text widget
+                                        "Class:" + snapshot.data[index].className,
+                                        // set some style to text
+                                        style: new TextStyle(
+                                            fontSize: 20.0, color: Colors.lightBlueAccent),
+                                      ),
+                                      new Text(
+                                        // Read the name field value and set it in the Text widget
+                                        "Weight: " + snapshot.data[index].weight.toString(),
+                                        // set some style to text
+                                        style: new TextStyle(
+                                            fontSize: 20.0, color: Colors.amber),
+                                      ),
+                                      new Text(
+                                        // Read the name field value and set it in the Text widget
+                                        "Credit: " + snapshot.data[index].credit.toString(),
+                                        // set some style to text
+                                        style: new TextStyle(
+                                            fontSize: 20.0, color: Colors.greenAccent),
+                                      ),
+                                    ],
+                                  )),
+                              padding: const EdgeInsets.all(15.0),
+                            ),
+                          );
+                      });
+              }
+          ),
         )
+
     );
+
   }
 }
 
