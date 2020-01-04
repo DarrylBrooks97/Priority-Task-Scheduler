@@ -12,10 +12,10 @@ class MyApp extends StatelessWidget {
     return Provider(
       auth: AuthService(),
       child: MaterialApp(
-          title: 'Priority School Tasker',
-          theme: ThemeData(
-            primarySwatch: Colors.red,
-          ),
+        title: 'Priority School Tasker',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
           home: HomeController(),
         routes: <String, WidgetBuilder> {
           '/signIn' : (BuildContext context) => SignUpView(authFormType: AuthFormType.signIn),
@@ -37,10 +37,10 @@ class HomeController extends StatelessWidget {
       builder: (context, AsyncSnapshot<String> snapshot) {
         if(snapshot.connectionState == ConnectionState.active) {
           final bool signedIn = snapshot.hasData;
-          return signedIn ? HomeView() : SignUpView(authFormType: AuthFormType.signUp);
+          return signedIn ? HomeView() : SignUpView();
         }
         return CircularProgressIndicator();
-      }
+      },
     );
   }
 }

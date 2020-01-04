@@ -57,13 +57,13 @@ class _SignUpViewState extends State<SignUpView> {
         String uid = await auth.signInWithEmailAndPassword(
             _email, _password);
         print("Signed in with ID $uid");
-        Navigator.of(context).pushReplacementNamed('/home');
+        //Navigator.of(context).pushReplacementNamed('/home');
       }
       else{
         String uid = await auth.createUserWithEmailAndPassword(
             _email, _password, _name);
         print("Signed in with new ID $uid");
-        Navigator.of(context).pushReplacementNamed('/home');
+        //Navigator.of(context).pushReplacementNamed('/home');
       }
     }catch(e){
       print(e);
@@ -129,7 +129,7 @@ class _SignUpViewState extends State<SignUpView> {
     List<Widget> textFields= [];
 
     // Text field for name
-    if(authFormType == AuthFormType.signUp){
+    if(authFormType != AuthFormType.signIn){
       textFields.add(
         TextFormField(
           style: TextStyle(fontSize: 22.0),

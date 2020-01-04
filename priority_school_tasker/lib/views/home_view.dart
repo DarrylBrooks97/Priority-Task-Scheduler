@@ -5,6 +5,8 @@ import 'dart:async';
 import 'package:priority_school_tasker/models/class.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
+import 'package:priority_school_tasker/services/provider_service.dart';
+import 'package:priority_school_tasker/services/auth_service.dart';
 
 
 
@@ -22,7 +24,7 @@ class HomeViewState extends State<HomeView> {
   noSuchMethod(Invocation i) => super.noSuchMethod(i);
 
   int _selectedPage = 0;
-  final _pageOptions = [
+  final List<Widget> _pageOptions = [
     Tasks(),   //First option
     AddNewAssignment(), //Middle Option
     MotivationalQuotes(), //Right Option
@@ -30,60 +32,53 @@ class HomeViewState extends State<HomeView> {
 //    MyDynamicListView(), //DEFAULT HOME: (_pageOptions.length - 1) index
   ];
 
+
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp(
-      title: 'Priority School Tasker',
+    return Scaffold(
+      body: _pageOptions[_selectedPage],
+      bottomNavigationBar: BottomNavigationBar(
 
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold
-        (
-//        appBar: new AppBar(title: Text("Home"),),
-        //NOTE: Add array of different page states to change between each state instead of
-        //always loading the DynamicListView(HOME)
-        body: _pageOptions[_selectedPage],
-        bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedPage,
+        onTap: onTabbed,
 
-          currentIndex: _selectedPage,
-          onTap: (int index){
-            setState((){
-              _selectedPage = index;
-            });
-          },
-          items: [
-            BottomNavigationBarItem(
-                backgroundColor: Colors.blue,
-                icon: Icon(CupertinoIcons.collections),
-                title: Text('Tasks')
-            ),
-            BottomNavigationBarItem(
-                backgroundColor: Colors.blue,
-                icon: Icon(CupertinoIcons.add_circled),
-                title: Text('Add')
-            ),
-            BottomNavigationBarItem(
-                backgroundColor: Colors.blue,
-                icon: Icon(CupertinoIcons.book),
-                title: Text('Quotes')
-            ),
-
-            BottomNavigationBarItem(
+        items: [
+          BottomNavigationBarItem(
               backgroundColor: Colors.blue,
-              icon: Icon(CupertinoIcons.search),
-              title: Text('Help'),
-            ),
-          ],
-        ),
-      ), //Scaffold
-    ); //MyMaterialApp
+              icon: Icon(CupertinoIcons.collections),
+              title: Text('Tasks')
+          ),
+          BottomNavigationBarItem(
+              backgroundColor: Colors.blue,
+              icon: Icon(CupertinoIcons.add_circled),
+              title: Text('Add')
+          ),
+          BottomNavigationBarItem(
+              backgroundColor: Colors.blue,
+              icon: Icon(CupertinoIcons.book),
+              title: Text('Quotes')
+          ),
+
+          BottomNavigationBarItem(
+            backgroundColor: Colors.blue,
+            icon: Icon(CupertinoIcons.search),
+            title: Text('Help'),
+          ),
+        ],
+      ),
+    );
+  }
+  void onTabbed(int index){
+    setState(() {
+      _selectedPage = index;
+    });
   }
 }
 
 //Dynamic List View(HOME)
 //Can go back to this from completing adding
+/*
 class MyDynamicListView extends StatelessWidget {
 
   @override
@@ -111,6 +106,7 @@ class MyDynamicListView extends StatelessWidget {
   }
 }
 
+ */
 //Allows user to add an assignment or modify
 //Also connects to the screen that allows the user to add a class
 class AddNewAssignment extends StatelessWidget {
@@ -240,7 +236,24 @@ class Tasks extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-        appBar: new AppBar(title: Text("Tasks"),),
+        appBar: new AppBar(
+          title: Text("Tasks"),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(CupertinoIcons.reply_thick_solid),
+              onPressed: () async{
+                try {
+                  AuthService auth = Provider.of(context).auth;
+                  await auth.signOut();
+                  print('Signed Out');
+                }
+                catch(e){
+                  print(e);
+                }
+              },
+            )
+          ],
+        ),
         body:
         ListView.separated(
           padding: const EdgeInsets.all(8),
