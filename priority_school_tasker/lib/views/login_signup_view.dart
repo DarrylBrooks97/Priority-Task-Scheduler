@@ -1,9 +1,13 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:priority_school_tasker/main.dart';
 import 'package:priority_school_tasker/services/auth_service.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:priority_school_tasker/services/provider_service.dart';
 
 final primaryColor = const Color(0xFF782F40);
-enum AuthFormType {signIn, signUp}
+enum AuthFormType {signIn, signUp, reset}
 
 
 class SignUpView extends StatefulWidget {
@@ -29,6 +33,43 @@ class _SignUpViewState extends State<SignUpView> {
   // placeholders
   String _email, _password, _name;
 
+  void switchAuthFormType(String state){
+    formkey.currentState.reset();
+    if(state == "signUp")
+      {
+        setState(() {
+          authFormType = AuthFormType.signUp;
+        });
+      }
+    else{
+      setState(() {
+        authFormType = AuthFormType.signIn;
+      });
+    }
+  }
+  
+  void submit() async {
+    final form = formkey.currentState;
+    form.save();
+    try {
+      final auth = Provider.of(context).auth;
+      if(authFormType == AuthFormType.signIn){
+        String uid = await auth.signInWithEmailAndPassword(
+            _email, _password);
+        print("Signed in with ID $uid");
+        Navigator.of(context).pushReplacementNamed('/home');
+      }
+      else{
+        String uid = await auth.createUserWithEmailAndPassword(
+            _email, _password, _name);
+        print("Signed in with new ID $uid");
+        Navigator.of(context).pushReplacementNamed('/home');
+      }
+    }catch(e){
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final _width = MediaQuery.of(context).size.width;
@@ -52,7 +93,7 @@ class _SignUpViewState extends State<SignUpView> {
                 child: Form(
                   key: formkey,
                   child: Column(
-                    children: buildInputs(),
+                    children: buildInputs() + buildButtons(),
                   ),
                 ),
               )
@@ -62,17 +103,17 @@ class _SignUpViewState extends State<SignUpView> {
       ),
     );
   }
-
   AutoSizeText buildHeaderText() {
-    String _headerText = 'test';
-
-    if(authFormType == AuthFormType.signIn) {
-      _headerText = "Hey there,welcome back";
-      }
-    else if(authFormType == AuthFormType.signUp) {
-      _headerText = "Come Join Us";
-      }
-
+    String _headerText;
+    if (authFormType == AuthFormType.signIn) {
+      _headerText = "Hey there, welcome back";
+    }
+    else if(authFormType == AuthFormType.reset) {
+      _headerText = "I see you forgot your password";
+    }
+    else {
+      _headerText = "Come join us";
+    }
     return AutoSizeText(
       _headerText,
       maxLines: 1,
@@ -87,7 +128,21 @@ class _SignUpViewState extends State<SignUpView> {
   List<Widget> buildInputs() {
     List<Widget> textFields= [];
 
-    // add email and password
+    // Text field for name
+    if(authFormType == AuthFormType.signUp){
+      textFields.add(
+        TextFormField(
+          style: TextStyle(fontSize: 22.0),
+          decoration: buildSignUpInputDecoration("name"),
+          onSaved: (value) => _name = value,
+        ),
+      );
+    }
+
+    // just a space
+    textFields.add(SizedBox(height: 20.0,));
+
+    // Text field for email
     textFields.add(
       TextFormField(
         style: TextStyle(fontSize: 22.0),
@@ -95,14 +150,22 @@ class _SignUpViewState extends State<SignUpView> {
         onSaved: (value) => _email = value,
       ),
     );
+
+    // just a space
     textFields.add(SizedBox(height: 20.0,));
+
+    // Text field for password
     textFields.add(
       TextFormField(
         style: TextStyle(fontSize: 22.0),
         decoration: buildSignUpInputDecoration("password"),
         onSaved: (value) => _password = value,
+        obscureText: true,
       ),
     );
+
+    // just a space
+    textFields.add(SizedBox(height: 30.0,));
     return textFields;
   }
 
@@ -123,6 +186,48 @@ class _SignUpViewState extends State<SignUpView> {
             bottom: 10.0,
             top: 10.0),
       );
+  }
+
+  List<Widget> buildButtons(){
+    String _switchButtonText, _newformState, _submitButtonText;
+
+    if(authFormType == AuthFormType.signIn){
+      _switchButtonText = "Dont have an account? Sign Up";
+      _newformState = "signUp";
+      _submitButtonText = "Sign In";
+    }
+    else{
+      _switchButtonText = "Have an account? Sign In";
+      _newformState = "signIn";
+      _submitButtonText = "Sign Up";
+    }
+
+    return [
+      Container(
+        width: MediaQuery.of(context).size.width * 0.7,
+        child: RaisedButton(
+          color: Colors.white,
+          textColor: primaryColor,
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Text(_submitButtonText,
+              style:  TextStyle(
+                fontSize: 20.0,
+                fontWeight : FontWeight.w900,
+              ),
+            ),
+          ),
+          onPressed: submit,
+        ),
+      ),
+
+      FlatButton(
+        child: Text(_switchButtonText, style: TextStyle(color: Colors.white),),
+        onPressed: (){
+          switchAuthFormType(_newformState);
+        },
+      )
+    ];
   }
 }
 

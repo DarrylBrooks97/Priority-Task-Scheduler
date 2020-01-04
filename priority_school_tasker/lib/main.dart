@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:priority_school_tasker/services/auth_service.dart';
 import 'package:priority_school_tasker/views/login_signup_view.dart';
 import 'package:priority_school_tasker/views/home_view.dart';
+import 'package:priority_school_tasker/services/provider_service.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,10 +16,10 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.red,
           ),
-          home: HomeView(),
+          home: HomeController(),
         routes: <String, WidgetBuilder> {
-          '/signIn' : (BuildContext context) => SignUpView(authFormType: AuthFormType.signUp),
-          '/signUp' : (BuildContext context) => SignUpView(authFormType: AuthFormType.signIn),
+          '/signIn' : (BuildContext context) => SignUpView(authFormType: AuthFormType.signIn),
+          '/signUp' : (BuildContext context) => SignUpView(authFormType: AuthFormType.signUp),
           '/home' : (BuildContext context) => HomeController(),
         },
       )
@@ -36,7 +37,7 @@ class HomeController extends StatelessWidget {
       builder: (context, AsyncSnapshot<String> snapshot) {
         if(snapshot.connectionState == ConnectionState.active) {
           final bool signedIn = snapshot.hasData;
-          return signedIn ? HomeView() : SignUpView();
+          return signedIn ? HomeView() : SignUpView(authFormType: AuthFormType.signUp);
         }
         return CircularProgressIndicator();
       }
@@ -44,14 +45,3 @@ class HomeController extends StatelessWidget {
   }
 }
 
-class Provider extends InheritedWidget {
-  final AuthService auth;
-  Provider({Key key, Widget child, this.auth,}) : super(key: key, child: child);
-
-  @override
-  bool updateShouldNotify(InheritedWidget oldWidget) {
-    return true;
-  }
-
-  static Provider of(BuildContext context) => (context.inheritFromWidgetOfExactType(Provider) as Provider);
-}
