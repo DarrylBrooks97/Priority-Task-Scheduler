@@ -8,7 +8,7 @@
 .buildlog/
 .history
 .svn/
-
+lib/taskImporter.py
 # IntelliJ related
 *.iml
 *.ipr
